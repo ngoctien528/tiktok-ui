@@ -3,10 +3,17 @@
 
 :root {
     --primary: #fe2c55;
+
+    //Default layout
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1150px;
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box; //bổ sung phần thiết lập trước "cấu hình CSS/SASS
+    //- gói gọn tổng kích thước các thành phần (content + padding + border..) bằng kích thước thiết lập
 }
 
 html {
