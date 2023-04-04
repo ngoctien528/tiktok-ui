@@ -1,0 +1,83 @@
+.wrapper {
+    border-radius: 4px;
+    min-width: 100px;
+    padding: 9px 16px;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background-color: var(--white);
+    border: 1px solid transparent; //chung là có border, nhưng để trans để ko nhìn thấy, cho những cái dưới chỉ cần để border-color nhưng giống nhau về 1px solid
+    user-select: none;
+    + .wrapper {
+        //code để khi 2 nút đứng cạnh nhau thì sẽ có khoảng cách, còn 1 mình thì ko có
+        margin-left: 8px;
+    }
+
+    &.disabled {
+        //cho vào trong wrapper để tăng độ ưu tiên css
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+.icon + .title,
+.title + .icon {
+    //icon bên trái và bên phải
+    margin-left: 8px;
+}
+
+//button types
+.rounded {
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgb(0 0 0 /6%);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.primary {
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+
+    &:hover {
+        border-color: var(--primary);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+    }
+}
+
+.outline {
+    border-color: var(--primary);
+    color: var(--primary);
+
+    &:hover {
+        border-color: var(--primary);
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+//button sizes
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.large {
+    min-width: 140px;
+    padding: 14px 16px;
+}
+//custom classname
+.custom-login {
+    color: blue;
+}
