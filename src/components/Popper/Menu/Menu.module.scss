@@ -1,0 +1,20 @@
+.menu-list {
+    width: 224px;
+
+    .menu-item {
+        //cho vô lớp cha thì mới enable dc css này
+        margin-left: 0px;
+    }
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 11px, 16px;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}

@@ -1,4 +1,6 @@
 .wrapper {
+    display: inline-flex;
+    // text-align: justify;
     border-radius: 4px;
     min-width: 100px;
     padding: 9px 16px;
@@ -27,6 +29,11 @@
 .title + .icon {
     //icon bên trái và bên phải
     margin-left: 8px;
+}
+
+.icon {
+    width: 24px;
+    text-align: center;
 }
 
 //button types
