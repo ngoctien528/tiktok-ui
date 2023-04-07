@@ -42,7 +42,7 @@ function Button({
         Comp = 'a';
         props.href = href;
     }
-    console.log(props);
+    // console.log(props);
     const classes = cx('wrapper', {
         [classNamee]: classNamee, //custom className
         primary,
