@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchIcon } from '~/components/Icons';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debounce = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
@@ -30,9 +32,12 @@ function Search() {
     };
 
     useEffect(() => {
+        if (!debounce.trim()) {
+            return;
+        }
         setLoading(true);
         //encodeURIComponent : để mã hóa kí tự nhập vào, tránh bị trùng với kí tự url truyền đi
-        fetch(`http://localhost:5132/api/Users?search=${encodeURIComponent(searchValue)}`)
+        fetch(`http://localhost:5132/api/Users?search=${encodeURIComponent(debounce)}`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res);
@@ -41,7 +46,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounce]);
     return (
         <HeadlessTippy
             interactive
