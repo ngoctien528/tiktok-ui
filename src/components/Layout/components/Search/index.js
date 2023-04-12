@@ -1,15 +1,15 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState, useRef } from 'react';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faL } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Wrapper as PropperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faL } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchIcon } from '~/components/Icons';
-import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
-
+import * as searchServices from '~/apiServices/searchServices';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -35,17 +35,15 @@ function Search() {
         if (!debounce.trim()) {
             return;
         }
-        setLoading(true);
-        //encodeURIComponent : để mã hóa kí tự nhập vào, tránh bị trùng với kí tự url truyền đi
-        fetch(`http://localhost:5132/api/Users?search=${encodeURIComponent(debounce)}`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const result = await searchServices.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
     return (
         <HeadlessTippy
