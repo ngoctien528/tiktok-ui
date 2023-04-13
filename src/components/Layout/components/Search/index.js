@@ -31,6 +31,17 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        // if (searchValue.startsWith(' ') || !searchValue.trim()) {
+        //     return;
+        // }
+
+        if (searchValue.charAt(0) === ' ') return;
+
+        setSearchValue(e.target.value);
+    };
+
     useEffect(() => {
         if (!debounce.trim()) {
             return;
@@ -66,7 +77,7 @@ function Search() {
                     ref={inputRef}
                     value={searchValue}
                     placeholder="Search accounts and videos"
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => {
                         setShowResult(true);
                     }}
@@ -80,7 +91,7 @@ function Search() {
                 )}
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
                     <SearchIcon />
                 </button>
