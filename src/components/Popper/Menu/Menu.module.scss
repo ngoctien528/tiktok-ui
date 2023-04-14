@@ -11,6 +11,11 @@
     padding-bottom: 8px;
 }
 
+.menu-body {
+    // overflow-y: auto; //thanh cuộn không đè layout
+    overflow-y: overlay; //thanh cuộn đè lên layout
+}
+
 .menu-item {
     width: 100%;
     padding: 11px, 16px;
@@ -27,6 +32,7 @@
 //Header
 
 .header {
+    flex-shrink: 0;
     position: relative;
     height: 50px;
 }
