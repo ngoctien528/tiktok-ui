@@ -15,9 +15,9 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
-    const debounce = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
@@ -43,19 +43,19 @@ function Search() {
     };
 
     useEffect(() => {
-        if (!debounce.trim()) {
+        if (!debouncedValue.trim()) {
             return;
         }
 
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchService.search(debounce);
+            const result = await searchService.search(debouncedValue);
             setSearchResult(result);
             setLoading(false);
         };
         fetchApi();
-    }, [debounce]);
+    }, [debouncedValue]);
     return (
         // dùng thẻ <div> tag để hết lỗi warning Tippy
         <div>

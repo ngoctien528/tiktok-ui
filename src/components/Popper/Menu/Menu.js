@@ -35,8 +35,13 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             );
         });
     };
-    const onBack = () => {
+    const handleBack = () => {
         setHistory((pre) => pre.slice(0, pre.length - 1));
+    };
+
+    //khi menu ẩn, thì quay lại level đầu
+    const handleResetMenu = () => {
+        setHistory((pre) => pre.slice(0, 1));
     };
     return (
         <Tippy
@@ -49,12 +54,12 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PropperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && <Header title={current.title} onBack={onBack} />}
+                        {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
                         <div className={cx('menu-body')}>{renderItems()}</div>
                     </PropperWrapper>
                 </div>
             )}
-            onHide={() => setHistory((pre) => pre.slice(0, 1))} //khi menu ẩn, thì quay lại level đầu
+            onHide={handleResetMenu} //khi menu ẩn, thì quay lại level đầu
         >
             {children}
         </Tippy>

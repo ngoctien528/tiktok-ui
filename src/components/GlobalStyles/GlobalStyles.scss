@@ -36,10 +36,6 @@ body {
 }
 
 //scrollbar CSS
-html ::-webkit-scrollbar {
-    border-radius: 0px;
-    width: 8px;
-}
 
 html *::-webkit-scrollbar {
     border-radius: 0;
@@ -49,16 +45,6 @@ html *::-webkit-scrollbar {
 html *::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(8, 8, 8, 0.08);
-}
-
-html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(8, 8, 8, 0.08);
-}
-
-html ::-webkit-scrollbar-track {
-    border-radius: 0px;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 html *::-webkit-scrollbar-track {
@@ -72,7 +58,7 @@ input,
     outline: none;
     border: none;
 }
-a[href] {
+a {
     color: var(--text-color);
     text-decoration: none;
 }

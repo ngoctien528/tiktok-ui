@@ -49,7 +49,7 @@
     }
 }
 .primary {
-    color: var(--white);
+    color: var(--white); // !important để tăng độ ưu tiên cho thuộc tính nhất
     background-color: var(--primary);
     border-color: var(--primary);
 
