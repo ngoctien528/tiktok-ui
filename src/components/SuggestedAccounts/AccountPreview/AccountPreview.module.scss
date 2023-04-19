@@ -1,0 +1,58 @@
+.wrapper {
+    width: 320px;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.follow {
+    padding: 6px 16px;
+}
+
+.body {
+    margin-top: 12px;
+    color: #161823;
+}
+
+.nickname {
+    font-size: 1.8rem;
+}
+
+.check {
+    font-size: 1.4rem;
+    color: #20d5ec;
+    margin-left: 4px;
+}
+
+.name {
+    font-size: 1.4rem;
+}
+
+.analytics {
+    margin-top: 10px;
+    font-size: 1.6rem;
+}
+
+.value {
+    font-size: 1.6rem;
+}
+
+//class tên là value mà đứng sau 1 class tên là value thì mới vô ( dấu + thì là đứng liền kề, dùng dấu ~ nếu có class khác đứng giữa)
+.value ~ .value {
+    margin-left: 20px;
+}
+
+.label {
+    color: #161823bf;
+    font-size: 1.6rem;
+}

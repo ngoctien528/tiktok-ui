@@ -43,6 +43,15 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
     const handleResetMenu = () => {
         setHistory((pre) => pre.slice(0, 1));
     };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PropperWrapper className={cx('menu-popper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+            </PropperWrapper>
+        </div>
+    );
     return (
         <Tippy
             hideOnClick={hideOnClick} //ko tắt menu đi khi click
@@ -51,14 +60,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             // visible
             delay={[0, 500]} //hiện thì 0ms, ẩn thì 500ms
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PropperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PropperWrapper>
-                </div>
-            )}
+            render={renderResult}
             onHide={handleResetMenu} //khi menu ẩn, thì quay lại level đầu
         >
             {children}
